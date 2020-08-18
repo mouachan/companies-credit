@@ -1,0 +1,12 @@
+[submodule "companies-svc"]
+	path = companies-svc
+	url = https://github.com/mouachan/companies-svc
+[submodule "companies-notation-svc"]
+	path = companies-notation-svc
+	url = https://github.com/mouachan/companies-notation-svc
+[submodule "companies-mgmt-frontend"]
+	path = companies-mgmt-frontend
+	url = https://github.com/mouachan/companies-mgmt-frontend
+[submodule "companies-loan-application-svc"]
+	path = companies-loan-application-svc
+	url = https://github.com/mouachan/companies-loan-application-svc
