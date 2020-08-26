@@ -20,8 +20,14 @@
       </security-realms>
     </security>
     <endpoints socket-binding='default' security-realm='default'>
-      <hotrod-connector name="hotrod"/>
-      <rest-connector name="rest"/>
+	    <hotrod-connector name='hotrod'/>
+        <!--authentication>
+          <sasl mechanisms='SCRAM-SHA-512 SCRAM-SHA-384 SCRAM-SHA-256 SCRAM-SHA-1 DIGEST-SHA-512 DIGEST-SHA-384 DIGEST-SHA-256 DIGEST-SHA DIGEST-MD5 PLAIN' qop='auth'/>
+        </authentication>
+      </hotrod-connector-->
+      <rest-connector name='rest'/>
+	      <!--authentication mechanisms='PLAIN'/>
+	</rest-connector-->
     </endpoints>
   </server>
 </infinispan>
