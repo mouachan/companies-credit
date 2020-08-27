@@ -247,17 +247,17 @@ oc apply -f ./companies-svc-knative.yml
 Browse the url  : http://companies-svc-companies-app.apps.ocp4.ouachani.net/
 replace .apps.ocp4.ouachani.net by your OCP url
 
-![Verify service] (/img/list-companies.png)
+![Verify service](/img/list-companies.png)
 
 
 ## Install Strimzi, infinispan and kogito operator
 
 Install Infinispan/Red Hat Data Grid operator (operator version 1.1.X)
-![infinispan installation] (/img/install-infinispan-11x.png)
+![infinispan installation](/img/install-infinispan-11x.png)
 Install Strimizi operator
-![strimzi installation] (/img/install-strimzi.png)
+![strimzi installation](/img/install-strimzi.png)
 Install Kogito operator
-![strimzi installation] (/img/install-kogito.png)
+![strimzi installation](/img/install-kogito.png)
 
 ## Install kogit-infra 
 
