@@ -1,5 +1,6 @@
 ## Infrastructure services
 
+
 To allow a quick setup of all services required to run this demo, we provide a docker compose template that starts the following services:
 - Infinispan
 - Kafka
@@ -52,3 +53,123 @@ Prometheus will also be available on http://localhost:9090, no authentication is
   ./mgmt-services/run-mgmt-console.sh
   ### Start kadrop
   ./kafdrop/run-kafdrop.sh
+
+  ### Install mongodb
+  brew install mongodb-community
+  brew services start mongodb-community   
+Connect to the db and :
+mongo companies -u admcomp -p r3dhat2020!
+
+```
+#create users
+> db.createUser(
+...   {
+...     user: "admin",
+...     pwd: "",
+...     roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
+...   }
+... )
+Successfully added user: {
+    "user" : "admin",
+    "roles" : [
+        {
+            "role" : "userAdminAnyDatabase",
+            "db" : "admin"
+        }
+    ]
+}
+> db.createUser(
+...   {
+...     user: "mroot",
+...     pwd: "",
+...     roles: [ { role: "root", db: "admin" } ]
+...   }
+... )
+Successfully added user: {
+    "user" : "mroot",
+    "roles" : [
+        {
+            "role" : "root",
+            "db" : "admin"
+        }
+    ]
+}
+
+> db.createUser(
+   {
+     user: "admcomp",
+     pwd:  "r3dhat2020!",
+     roles: [ { role: "readWrite", db: "companies" } ]
+   }
+ )
+Successfully added user: {
+    "user" : "admcomp",
+    "roles" : [
+        {
+            "role" : "readWrite",
+            "db" : "companies"
+        }
+    ]
+}
+```
+```
+#create db
+use companies
+#create collection
+db.createCollection( "companyInfo", {
+   validator: { $jsonSchema: {
+      bsonType: "object",
+      required: [ "siren" ],
+      properties: {
+         siren: {
+            bsonType: "string",
+            description: "must be a string and is required"
+         },
+         denomination: {
+            bsonType : "string",
+            description: "must be a string"
+         },
+         siret: {
+            bsonType : "string",
+            description: "must be a string"
+         },
+         address: {
+            bsonType : "string",
+            description: "must be a string"
+         },
+         capitalSocial: {
+            bsonType : "string",
+            description: "must be a String"
+         },
+         chiffreAffaire: {
+            bsonType : "string",
+            description: "must be a String"
+         },
+          trancheEffectif: {
+            bsonType : "string",
+            description: "must be a String"
+         },
+          tva: {
+            bsonType : "string",
+            description: "must be a string"
+         },
+         immatriculationDate: {
+            bsonType : "date",
+            description: "must be a Date"
+         },
+          type: {
+            bsonType : "string",
+            description: "must be a string"
+         },
+         updateDate: {
+            bsonType : "date",
+            description: "must be a Date"
+         }
+      }
+   } }
+} )
+```
+### to run each service  : companies-svc, companies-notation-svc, companies-loan-application-svc :
+ ./mvnw clean compile quarkus:dev 
+
+
