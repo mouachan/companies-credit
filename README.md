@@ -137,10 +137,64 @@ db.createCollection( "companyInfo", {
       }
    } }
 } )
+
+//create notation collection
+db.createCollection( "notation", {
+   validator: { $jsonSchema: {
+      bsonType: "object",
+      required: [ "siren" ],
+      properties: {
+         siren: {
+            bsonType: "string",
+            description: "must be a string and is required"
+         },
+         dateCalcul: {
+            bsonType : "date",
+            description: "must be a date"
+         },
+         score: {
+            bsonType : "string",
+            description: "must be a string"
+         },
+         note: {
+            bsonType : "string",
+            description: "must be a string"
+         },
+         orientation: {
+            bsonType : "string",
+            description: "must be a String"
+         },
+         typeAiguillage: {
+            bsonType : "string",
+            description: "must be a String"
+         },
+          decoupageSectoriel: {
+            bsonType : "string",
+            description: "must be a String"
+         },
+          detail: {
+            bsonType : "string",
+            description: "must be a string"
+         }
+      }
+   } }
+} )
 ```
 ## Add companies
 ```
-  var immatriculationDate = new Date(1954, 12, 24);
+ //insertion notation
+    var dateCalcul = new Date(2020, 07, 24);
+  db.notation.insert({  siren: "542107651",
+         "dateCalcul": dateCalcul,
+         "note": "A",
+         "orientation": "Favorable",
+         "score": "0.1",
+         "typeAiguillage": "MODELE_1",
+         "decoupageSectoriel": "1",
+         "detail": ""
+       })
+//List of companies
+    var immatriculationDate = new Date(1954, 12, 24);
     var updateDate =  new Date(2020, 04, 11);
   db.companyInfo.insert({  siren: "542107651",
          "denomination": "ENGIE",
