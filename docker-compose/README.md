@@ -17,11 +17,11 @@ In order to use it, please ensure you have Docker Compose installed on your mach
   
   For MacOS and Windows:
   
-    docker-compose -f travel-agency-services-macos-windows.yml up
+    docker-compose -f credit-services-macos-windows.yml up
   
   For Linux:
   
-    docker-compose -f travel-agency-services-linux.yml up
+    docker-compose -f credit-services-linux.yml up
     
   Once all services bootstrap, the following ports will be assigned on your local machine:
   - Infinispan: 11222
@@ -36,12 +36,19 @@ Prometheus will also be available on http://localhost:9090, no authentication is
   
   To stop all services, simply run:
 
-    docker-compose -f travel-agency-services.yml stop
+    docker-compose -f credit-services-macos-windows.yml stop
     
   It is also recommended to remove any of stopped containers by running:
   
-    docker-compose -f travel-agency-services.yml rm  
+    docker-compose -f credit-services-macos-windows.yml rm  
     
   For more details please check the Docker Compose documentation.
   
     docker-compose --help  
+
+  ### Start data-index
+  ./data-index/run-data-index-minimal.sh
+  ### Start managment console
+  ./mgmt-services/run-mgmt-console.sh
+  ### Start kadrop
+  ./kafdrop/run-kafdrop.sh
